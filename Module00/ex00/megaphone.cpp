@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 00:14:20 by minjungk          #+#    #+#             */
-/*   Updated: 2023/05/26 01:32:51 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/06/08 21:43:33 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	displayUpperCase(const std::string& str)
 {
 	for (std::string::size_type i = 0; i < str.length(); ++i)
-		std::cout << char(std::toupper(str[i]));
+		std::cout << char(std::toupper(str.at(i)));
 }
 
 int	main(int argc, char **argv)
