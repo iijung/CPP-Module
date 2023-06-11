@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 17:21:25 by minjungk          #+#    #+#             */
-/*   Updated: 2023/06/11 20:42:30 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/06/11 23:04:22 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int		Fixed::toInt(void) const
 
 float	Fixed::toFloat(void) const
 {
-	return this->getRawBits() / float(1 << this->_bits);
+	return (this->getRawBits() / float(1 << this->_bits));
 }
 
 std::ostream&	operator<<(std::ostream& out, const Fixed& obj)
