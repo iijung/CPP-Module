@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 17:12:25 by minjungk          #+#    #+#             */
-/*   Updated: 2023/06/11 17:37:09 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/06/11 18:07:05 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class Fixed
 	public:
 		Fixed(void);
 		~Fixed(void);
-		Fixed(Fixed &obj);
+		Fixed(const Fixed &obj);
 
 		Fixed&	operator=(const Fixed &obj);
 		int		getRawBits(void) const;
