@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungkminjungk@student.42se    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 03:06:59 by minjungk          #+#    #+#             */
-/*   Updated: 2023/06/13 14:08:00 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/06/08 23:40:33 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,10 @@ int	main(void)
 	while (1)
 	{
 		std::cout << "Usage: ADD | SEARCH | EXIT" << std::endl;
-		std::cin >> command;
+		std::getline(std::cin, command);
 		if (std::cin.eof() || std::cin.fail())
 			return (EXIT_FAILURE);
 		std::cin.clear();
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		if (command.compare("EXIT") == 0)
 			break ;
 		else if (command.compare("ADD") == 0)
