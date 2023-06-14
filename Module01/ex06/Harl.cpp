@@ -6,13 +6,13 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 05:03:33 by minjungk          #+#    #+#             */
-/*   Updated: 2023/06/11 08:31:49 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/06/14 14:44:43 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 
-Harl::Harl(void) : _f(NULL)
+Harl::Harl(void)
 {
 }
 
