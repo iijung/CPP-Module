@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 17:12:25 by minjungk          #+#    #+#             */
-/*   Updated: 2023/06/12 00:00:24 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/06/14 17:12:51 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ class Fixed
 		static Fixed&		min(Fixed &obj1, Fixed &obj2);
 		static const Fixed&	max(const Fixed &obj1, const Fixed &obj2);
 		static const Fixed&	min(const Fixed &obj1, const Fixed &obj2);
-
-		friend std::ostream&	operator<<(std::ostream& out, const Fixed& obj);
 };
+
+std::ostream&	operator<<(std::ostream& out, const Fixed& obj);
 
 #endif /* __FIXED_H__ */

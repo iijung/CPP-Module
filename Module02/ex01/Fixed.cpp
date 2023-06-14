@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 17:21:25 by minjungk          #+#    #+#             */
-/*   Updated: 2023/06/11 23:04:22 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/06/14 17:09:03 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,6 @@ float	Fixed::toFloat(void) const
 
 std::ostream&	operator<<(std::ostream& out, const Fixed& obj)
 {
-	const int	mask = (1 << obj._bits) - 1;
-
-	if (obj.getRawBits() & mask)
-		out << obj.toFloat();
-	else
-		out << obj.toInt();
+	out << obj.toFloat();
 	return (out);
 }

@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 17:12:25 by minjungk          #+#    #+#             */
-/*   Updated: 2023/06/11 19:31:36 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/06/14 17:09:33 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ class Fixed
 
 		int		toInt(void) const;
 		float	toFloat(void) const;
-		
-		friend std::ostream&	operator<<(std::ostream& out, const Fixed& obj);
 };
+
+std::ostream&	operator<<(std::ostream& out, const Fixed& obj);
 
 #endif /* __FIXED_H__ */

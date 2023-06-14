@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 01:12:16 by minjungk          #+#    #+#             */
-/*   Updated: 2023/06/12 04:12:05 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/06/14 17:16:53 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,9 @@ class Point
 
 		float	getX(void) const;
 		float	getY(void) const;
-
-
-		friend std::ostream&	operator<<(std::ostream& out, const Point& obj);
 };
+
+std::ostream&	operator<<(std::ostream& out, const Point& obj);
 
 bool	bsp(Point const a, Point const b, Point const c, Point const point);
 #endif /* __POINT_H__ */
