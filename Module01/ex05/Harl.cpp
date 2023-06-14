@@ -6,13 +6,13 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 05:03:33 by minjungk          #+#    #+#             */
-/*   Updated: 2023/06/11 06:46:30 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/06/14 16:05:32 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 
-Harl::Harl(void) : _f(NULL)
+Harl::Harl(void)
 {
 }
 
@@ -63,27 +63,28 @@ Harl::Level Harl::getLevel(std::string level)
 
 void	Harl::complain(std::string level)
 {
+	void				(Harl::*f)(void);
 	const enum Level	type = this->getLevel(level);
 
 	switch (type)
 	{
 		case LEVEL_DEBUG:
-			this->_f = &Harl::_debug;
+			f = &Harl::_debug;
 			break;
 		case LEVEL_INFO:
-			this->_f = &Harl::_info;
+			f = &Harl::_info;
 			break;
 		case LEVEL_WARNING:
-			this->_f = &Harl::_warning;
+			f = &Harl::_warning;
 			break;
 		case LEVEL_ERROR:
-			this->_f = &Harl::_error;
+			f = &Harl::_error;
 			break;
 		default:
-			this->_f = NULL;
+			f = NULL;
 	}
-	if (this->_f)
-		(this->*_f)();
+	if (f)
+		(this->*f)();
 	else
 		std::cout <<  "[ Probably complaining about insignificant problems ]" << std::endl;
 }

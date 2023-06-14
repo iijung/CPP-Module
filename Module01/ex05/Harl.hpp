@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 05:01:56 by minjungk          #+#    #+#             */
-/*   Updated: 2023/06/11 06:44:49 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/06/14 15:57:42 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 class	Harl
 {
 	private:
-		void	(Harl::*_f)(void);
-
 		void	_debug(void);
 		void	_info(void);
 		void	_warning(void);
