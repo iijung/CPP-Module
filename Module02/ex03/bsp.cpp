@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 01:22:35 by minjungk          #+#    #+#             */
-/*   Updated: 2023/06/12 03:54:06 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/06/15 15:09:39 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,7 @@ bool	bsp(Point const a, Point const b, Point const c, Point const point)
 	area[1] = _area(a, b, point);
 	area[2] = _area(a, point, c);
 	area[3] = _area(point, b, c);
+	if (area[1] == 0 || area[2] == 0 || area[3] == 0)
+		return (false);
 	return (area[0] == area[1] + area[2] + area[3]);
 }
