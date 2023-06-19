@@ -6,7 +6,7 @@
 #    By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/26 00:00:51 by minjungk          #+#    #+#              #
-#    Updated: 2023/06/20 05:01:06 by minjungk         ###   ########.fr        #
+#    Updated: 2023/06/20 05:55:00 by minjungk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 .DEFAULT_GOAL := all
 
 CXX			= c++
-CXXFLAGS	= -Wall -Wextra -Werror -Wshadow -std=c++98 -MMD -MP -g
+CXXFLAGS	= -Wall -Wextra -Werror -Wshadow -std=c++98 -MMD -MP
 
 NAME		= main
 
