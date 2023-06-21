@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 22:14:41 by minjungk          #+#    #+#             */
-/*   Updated: 2023/06/19 03:55:53 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/06/21 15:18:29 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ ClapTrap::~ClapTrap(void)
 }
 
 ClapTrap::ClapTrap(void)
-	:_hit_points(10), _energy_points(10), _attack_damage(0)
+	:_name(""), _hit_points(10), _energy_points(10), _attack_damage(0)
 {
 	std::cout << "ClapTrap default constructor called" << std::endl;
 }

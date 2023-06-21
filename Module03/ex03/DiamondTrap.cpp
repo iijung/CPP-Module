@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 23:05:02 by minjungk          #+#    #+#             */
-/*   Updated: 2023/06/19 06:21:25 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/06/21 15:18:55 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@ DiamondTrap::~DiamondTrap(void)
 }
 
 DiamondTrap::DiamondTrap(void):
-	ClapTrap(), ScavTrap(), FragTrap(), _name(NULL)
+	ClapTrap(), ScavTrap(), FragTrap(), _name("")
 {
+	ClapTrap::setName("_clap_name");
 	std::cout << "DiamondTrap default constructor called" << std::endl;
 	this->setEnergyPoints(50);
 }
