@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 21:11:47 by minjungk          #+#    #+#             */
-/*   Updated: 2023/06/20 05:30:13 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/06/21 22:28:08 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ Cat& Cat::operator=(const Cat& obj)
 	Brain	*brain = obj.getBrain();
 
 	std::cout << "Cat copy assignment operator called" << std::endl;
+	if (this == &obj)
+		return (*this);
 	this->_type = obj.getType();
 	delete this->_brain;
 	this->_brain = NULL;

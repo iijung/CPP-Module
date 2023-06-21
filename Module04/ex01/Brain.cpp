@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 02:40:11 by minjungk          #+#    #+#             */
-/*   Updated: 2023/06/20 04:19:16 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/06/21 22:28:04 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ Brain::Brain(const Brain& obj)
 Brain&	Brain::operator=(const Brain& obj)
 {
 	std::cout << "Brain copy assignment operator called" << std::endl;
+	if (this == &obj)
+		return (*this);
 	for (int i = 0; i < 100; i++)
 		this->_ideas[i] = obj.getIdea(i);
 	return (*this);

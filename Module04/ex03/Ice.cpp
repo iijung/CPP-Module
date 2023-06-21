@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 03:42:51 by minjungk          #+#    #+#             */
-/*   Updated: 2023/06/21 04:09:35 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/06/21 22:28:57 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ Ice::Ice(const Ice& obj): AMateria(obj.getType())
 Ice& Ice::operator=(const Ice& obj)
 {
 	std::cout << "Ice copy assignment operator called" << std::endl;
+	if (this == &obj)
+		return (*this);
 	this->_type = obj.getType();
 	return (*this);
 }

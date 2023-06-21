@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 21:11:47 by minjungk          #+#    #+#             */
-/*   Updated: 2023/06/20 01:56:37 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/06/21 22:27:56 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ WrongCat::WrongCat(const WrongCat& obj): WrongAnimal()
 WrongCat& WrongCat::operator=(const WrongCat& obj)
 {
 	std::cout << "WrongCat copy assignment operator called" << std::endl;
+	if (this == &obj)
+		return (*this);
 	this->_type = obj.getType();
 	return (*this);
 }

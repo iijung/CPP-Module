@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 01:44:52 by minjungk          #+#    #+#             */
-/*   Updated: 2023/06/21 03:50:25 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/06/21 22:28:35 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ AMateria::AMateria(const AMateria& obj): _type(obj.getType())
 AMateria& AMateria::operator=(const AMateria& obj)
 {
 	std::cout << "AMateria copy constructor called" << std::endl;
+	if (this == &obj)
+		return (*this);
 	this->_type = obj.getType();
 	return (*this);
 }

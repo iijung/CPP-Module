@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 02:22:01 by minjungk          #+#    #+#             */
-/*   Updated: 2023/06/21 04:08:21 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/06/21 22:28:50 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ Character& Character::operator=(const Character& obj)
 {
 	this->_name = obj.getName();
 	std::cout << "Character " << this->_name << " copy constructor called" << std::endl;
+	if (this == &obj)
+		return (*this);
 	for (int i = 0; i < 4; i++)
 	{
 		delete this->_slot[i];

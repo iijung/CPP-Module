@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 01:44:55 by minjungk          #+#    #+#             */
-/*   Updated: 2023/06/21 04:05:25 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/06/21 22:28:54 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ Cure::Cure(const Cure& obj): AMateria(obj.getType())
 Cure&	Cure::operator=(const Cure& obj)
 {
 	std::cout << "Cure copy assignment operator called" << std::endl;
+	if (this == &obj)
+		return (*this);
 	this->_type = obj.getType();
 	return (*this);
 }

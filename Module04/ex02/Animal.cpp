@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 21:09:38 by minjungk          #+#    #+#             */
-/*   Updated: 2023/06/20 01:52:44 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/06/21 22:28:18 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ Animal::Animal(const Animal& obj)
 Animal& Animal::operator=(const Animal& obj)
 {
 	std::cout << "Animal copy assignment operator called" << std::endl;
+	if (this == &obj)
+		return (*this);
 	this->_type = obj.getType();
 	return (*this);
 }
