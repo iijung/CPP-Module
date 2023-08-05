@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 22:04:16 by minjungk          #+#    #+#             */
-/*   Updated: 2023/06/19 06:10:24 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/08/05 18:05:48 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 class	ClapTrap
 {
-	private:
+	protected:
 		std::string		_name;
 		unsigned int	_hit_points;
 		unsigned int	_energy_points;
