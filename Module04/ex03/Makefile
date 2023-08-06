@@ -6,7 +6,7 @@
 #    By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/26 00:00:51 by minjungk          #+#    #+#              #
-#    Updated: 2023/06/21 03:50:12 by minjungk         ###   ########.fr        #
+#    Updated: 2023/08/05 18:08:52 by minjungk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,9 +25,9 @@ SRCS		= \
 	MateriaSource.cpp \
 	Character.cpp \
 	main.cpp
--include $(DEPS)
 OBJS		= $(SRCS:.cpp=.o)
 DEPS		= $(SRCS:.cpp=.d)
+-include $(DEPS)
 
 $(NAME): $(OBJS)
 	$(LINK.cpp) $^ $(LOADLIBES) $(LDLIBS) -o $@
