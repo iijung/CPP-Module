@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 18:11:16 by minjungk          #+#    #+#             */
-/*   Updated: 2023/08/06 14:13:02 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/08/07 17:09:38 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ class Bureaucrat
 	private:
 		const std::string	_name;
 		int					_grade;	/* range: 1 ~ 150 */
+
 	public:
+		Bureaucrat(void);
 		Bureaucrat(const std::string &name, int grade);
 		Bureaucrat(const Bureaucrat &obj);
 		Bureaucrat& operator=(const Bureaucrat& obj);

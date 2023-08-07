@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 22:44:10 by minjungk          #+#    #+#             */
-/*   Updated: 2023/08/07 13:26:26 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/08/07 17:10:51 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,12 @@
 Bureaucrat::~Bureaucrat(void)
 {
 	std::cout << "Bureaucrat " << _name << " destructor called" << std::endl;
+}
+
+Bureaucrat::Bureaucrat(void)
+	: _name("default"), _grade(150)
+{
+	std::cout << "Bureaucrat default constructor called" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const std::string &name, int grade)
