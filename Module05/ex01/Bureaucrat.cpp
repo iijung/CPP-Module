@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 22:44:10 by minjungk          #+#    #+#             */
-/*   Updated: 2023/08/06 14:24:58 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/08/07 13:26:26 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,19 @@ void	Bureaucrat::decrement(void)
 	catch (std::exception &e)
 	{
 		std::cerr << e.what() << std::endl;
+	}
+}
+
+void	Bureaucrat::signForm(Form &form)
+{
+	try
+	{
+		form.beSigned(*this);
+		std::cout << this->_name << " signed " << form.getName() << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << this->_name << " couldn't sign " << form.getName() << " because " << e.what() << std::endl;
 	}
 }
 
