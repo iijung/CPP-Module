@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 19:48:12 by minjungk          #+#    #+#             */
-/*   Updated: 2023/08/07 13:33:21 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/08/08 03:23:36 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ class Form
 		const int			_sign_grade;
 		const int			_execute_grade;
 	public:
+		Form(void);
 		Form(std::string name, int sign_grade, int execute_grade);
 		Form(const Form& obj);
 		Form& operator=(const Form& obj);

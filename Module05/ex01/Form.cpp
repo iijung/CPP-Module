@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 01:05:57 by minjungk          #+#    #+#             */
-/*   Updated: 2023/08/07 13:29:40 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/08/08 04:56:25 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,22 @@ Form::~Form(void)
 	std::cout << "Form " << _name << " destructor called" << std::endl;
 }
 
+Form::Form(void)
+	: _name("default"),
+	_sign_grade(150),
+	_execute_grade(150)
+{
+	std::cout << "Form default constructor called" << std::endl;
+	this->_signed = false;
+}
+
+
 Form::Form(std::string name, int sign_grade, int execute_grade):
 	_name(name),
 	_sign_grade(sign_grade),
 	_execute_grade(execute_grade)
 {
-	std::cout << "Form " << _name << "constructor called" << std::endl;
+	std::cout << "Form " << _name << " constructor called" << std::endl;
 	this->_signed = false;
 }
 
@@ -85,9 +95,10 @@ int	Form::getExecuteGrade(void) const
 
 std::ostream&	operator<<(std::ostream& out, const Form& obj)
 {
-	out << obj.getName() << ", form signed " << obj.getSigned() << std::endl;
-	out << obj.getName() << ", form sign grade" << obj.getSignGrade() << std::endl;
-	out << obj.getName() << ", form execute grade" << obj.getExecuteGrade() << std::endl;
+	out << obj.getName() << ", form"
+		<< " signed: " << obj.getSigned()
+		<< " signgrade:" << obj.getSignGrade()
+		<< " execute grade:" << obj.getExecuteGrade() << std::endl;
 	return (out);
 }
 
