@@ -6,11 +6,13 @@
 /*   By: minjungk <minjungk@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 03:03:12 by minjungk          #+#    #+#             */
-/*   Updated: 2023/08/08 07:07:01 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/08/10 01:33:19 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
+#include <cstdlib>
+#include <ctime>
 
 /* ************************************************************************** */
 // Orthodox Canonical Class Form 
@@ -51,6 +53,14 @@ int	RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
 	if (this->getExecuteGrade() < executor.getGrade())
 		throw AForm::GradeTooLowException();
-	// Makes some drilling noises. Then, informs that <target> has been robotomized successfully 50% of the time. Otherwise, informs that the robotomy failed.
+	std::srand(std::time(NULL));
+	std::cout << "Robotomizing the " << this->getTarget() << std::endl;
+	if (std::rand() % 2)
+	{
+		std::cout << "[1;33mbzzzz......[0m" << std::endl;
+		std::cout << "[1;36mRobotomy complete.[0m" << std::endl;
+	}
+	else
+		std::cout << "[1;31mRobotomy failed.[0m" << std::endl;
 	return (EXIT_SUCCESS);
 }

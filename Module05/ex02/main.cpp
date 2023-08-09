@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 23:11:03 by minjungk          #+#    #+#             */
-/*   Updated: 2023/08/08 07:11:29 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/08/10 01:32:04 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,15 @@
 
 void	test_shrubbery(Bureaucrat &bureaucrat)
 {
-	ShrubberyCreationForm	form("target");
+	ShrubberyCreationForm	form("kgnujnim");
+
+	bureaucrat.signForm(form);
+	bureaucrat.executeForm(form);
+}
+
+void	test_robotomy(Bureaucrat &bureaucrat)
+{
+	RobotomyRequestForm		form("kgnujnim");
 
 	bureaucrat.signForm(form);
 	bureaucrat.executeForm(form);
@@ -33,6 +41,8 @@ int	main(void)
 	test_shrubbery(min);
 	test_shrubbery(jung);
 	std::cout << std::setfill('=') << std::setw(80) << "." << std::endl;
+	test_robotomy(min);
+	test_robotomy(jung);
 	std::cout << std::setfill('=') << std::setw(80) << "." << std::endl;
 	return (0);
 }
