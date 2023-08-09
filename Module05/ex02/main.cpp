@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 23:11:03 by minjungk          #+#    #+#             */
-/*   Updated: 2023/08/10 01:32:04 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/08/10 01:37:21 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,14 @@ void	test_robotomy(Bureaucrat &bureaucrat)
 	bureaucrat.executeForm(form);
 }
 
+void	test_president(Bureaucrat &bureaucrat)
+{
+	PresidentialPardonForm	form("kgnujnim");
+
+	bureaucrat.signForm(form);
+	bureaucrat.executeForm(form);
+}
+
 int	main(void)
 {
 	Bureaucrat	min("min", 1);
@@ -43,6 +51,9 @@ int	main(void)
 	std::cout << std::setfill('=') << std::setw(80) << "." << std::endl;
 	test_robotomy(min);
 	test_robotomy(jung);
+	std::cout << std::setfill('=') << std::setw(80) << "." << std::endl;
+	test_president(min);
+	test_president(jung);
 	std::cout << std::setfill('=') << std::setw(80) << "." << std::endl;
 	return (0);
 }
