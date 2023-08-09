@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 17:26:02 by minjungk          #+#    #+#             */
-/*   Updated: 2023/08/08 04:58:14 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/08/09 18:41:35 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 
 class ShrubberyCreationForm: public AForm
 {
+	private:
+		static const char	*_white_pink_salix[];
 	public:
 		ShrubberyCreationForm(void);
 		ShrubberyCreationForm(std::string target);

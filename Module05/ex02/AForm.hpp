@@ -6,13 +6,14 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 19:48:12 by minjungk          #+#    #+#             */
-/*   Updated: 2023/08/08 04:51:55 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/08/09 19:02:56 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #ifndef __A_FORM_H__
 # define __A_FORM_H__
+# include <cstdlib>
 # include <iostream>
 # include <exception>
 # include "Bureaucrat.hpp"
