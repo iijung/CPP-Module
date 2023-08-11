@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 17:26:02 by minjungk          #+#    #+#             */
-/*   Updated: 2023/08/09 18:41:35 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/08/11 15:49:36 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ class ShrubberyCreationForm: public AForm
 		ShrubberyCreationForm& operator=(const ShrubberyCreationForm &obj);
 		virtual ~ShrubberyCreationForm(void);
 
-		int	execute(Bureaucrat const & executor) const;
+		int						execute(Bureaucrat const & executor) const;
+		ShrubberyCreationForm*	clone(void) const;
 };
 
 #endif /* __SHRUBBERY_CREATION_FORM_H__ */

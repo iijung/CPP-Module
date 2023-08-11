@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 19:48:12 by minjungk          #+#    #+#             */
-/*   Updated: 2023/08/09 19:02:56 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/08/11 16:15:57 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <cstdlib>
 # include <iostream>
 # include <exception>
+# include <iomanip>
 # include "Bureaucrat.hpp"
 
 class Bureaucrat;
@@ -43,6 +44,7 @@ class AForm
 
 		void				beSigned(const Bureaucrat& bureaucrat);
 		virtual int			execute(Bureaucrat const & executor) const = 0;
+		virtual AForm*		clone(void) const = 0;
 
 		class GradeTooHighException: public std::exception
 		{

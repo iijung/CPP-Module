@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 17:20:14 by minjungk          #+#    #+#             */
-/*   Updated: 2023/08/11 14:50:24 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/08/11 16:13:06 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ Intern&	Intern::operator=(const Intern &obj)
 
 const std::string	Intern::_form_names[Intern::MAX_FORM_TYPE] =
 {
-	[FORM_NOT_FOUND] = "",
 	[SHRUBBERY_CREATION] = "shrubbery creation",
 	[ROBOTOMY_REQUEST] = "robotomy request",
 	[PRESIDENTIAL_PARDON] = "presidential pardon",
@@ -56,14 +55,19 @@ Intern::e_form_type	Intern::getFormType(std::string name)
 		if (name.compare(this->_form_names[static_cast<e_form_type>(i)]) == 0)
 			return (static_cast<e_form_type>(i));
 	}
-	return (FORM_NOT_FOUND);
+	throw Intern::InvalidForm();
 }
 
 std::string	Intern::getFormName(Intern::e_form_type type)
 {
 	if (type == MAX_FORM_TYPE)
-		return (Intern::_form_names[FORM_NOT_FOUND]);
+		throw Intern::InvalidForm();
 	return Intern::_form_names[type];
+}
+
+const char*	Intern::InvalidForm::what() const throw()
+{
+	return ("Invalid form");
 }
 
 /* ************************************************************************** */

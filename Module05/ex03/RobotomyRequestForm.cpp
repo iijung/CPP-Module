@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 03:03:12 by minjungk          #+#    #+#             */
-/*   Updated: 2023/08/10 01:33:19 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/08/11 15:48:17 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,3 +64,9 @@ int	RobotomyRequestForm::execute(Bureaucrat const & executor) const
 		std::cout << "[1;31mRobotomy failed.[0m" << std::endl;
 	return (EXIT_SUCCESS);
 }
+
+RobotomyRequestForm*	RobotomyRequestForm::clone(void) const
+{
+	return (new RobotomyRequestForm(*this));
+}
+

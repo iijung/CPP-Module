@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 17:26:22 by minjungk          #+#    #+#             */
-/*   Updated: 2023/08/08 04:59:33 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/08/11 15:47:10 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ class RobotomyRequestForm: public AForm
 		RobotomyRequestForm& operator=(const RobotomyRequestForm &obj);
 		virtual ~RobotomyRequestForm(void);
 
-		int	execute(Bureaucrat const & executor) const;
+		int						execute(Bureaucrat const & executor) const;
+		RobotomyRequestForm*	clone(void) const;
 };
 
 #endif /* __ROBOTOMY_REQUEST_FORM_H__ */

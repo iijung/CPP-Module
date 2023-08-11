@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 01:05:57 by minjungk          #+#    #+#             */
-/*   Updated: 2023/08/08 04:57:54 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/08/11 16:20:51 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,11 +99,17 @@ int	AForm::getExecuteGrade(void) const
 
 std::ostream&	operator<<(std::ostream& out, const AForm& obj)
 {
-	out << obj.getName() << ", form"
-		<< " signed: " << obj.getSigned()
-		<< " target: " << obj.getTarget()
-		<< " signgrade:" << obj.getSignGrade()
-		<< " execute grade:" << obj.getExecuteGrade() << std::endl;
+	out << "║"
+		<< std::setw(3) << (obj.getSigned()? "✅" : "❌")
+		<< "│"
+		<< std::setw(7) << obj.getSignGrade()
+		<< "│"
+		<< std::setw(7) << obj.getExecuteGrade()
+		<< "│"
+		<< std::setw(30) << obj.getName()
+		<< "│"
+		<< std::setw(27) << obj.getTarget()
+		<< "║" << std::endl;
 	return (out);
 }
 
