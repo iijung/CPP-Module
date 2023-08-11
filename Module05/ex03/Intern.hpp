@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 17:15:46 by minjungk          #+#    #+#             */
-/*   Updated: 2023/08/11 16:14:44 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/08/12 03:18:18 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ class Intern
 			MAX_FORM_TYPE,
 		};
 		Intern::e_form_type	getFormType(std::string name);
-		std::string			getFormName(Intern::e_form_type type);
+		std::string			getFormName(int type);
 
 		class InvalidForm: public std::exception
 		{

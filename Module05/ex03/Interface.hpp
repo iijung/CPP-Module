@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 19:48:12 by minjungk          #+#    #+#             */
-/*   Updated: 2023/08/12 00:12:45 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/08/12 02:45:16 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 # define __A_FORM_REPOSITORY_H__
 # include "Intern.hpp"
 # include <cstdio>
-//# include <cstdlib>
 # include <unistd.h>
 # include <termios.h>
 
@@ -38,14 +37,11 @@ class Interface
 		size_t		_idx;
 
 		/* gui util*/
-		void		moveCursorTo(int row, int col) {
-			std::cout << "\x1b[" << row << ";" << col << "H";
-		}
+		void	_moveCursor(int row, int col) const;
 
-		AForm*	newForm(void);
-		void	deleteForm(void);
+		AForm*	_newForm(void);
 
-		void	_display(void);
+		void	_display(void) const;
 		void	_commandForm(void);
 		void	_command(void);
 	public:

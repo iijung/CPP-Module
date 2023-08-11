@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 17:20:14 by minjungk          #+#    #+#             */
-/*   Updated: 2023/08/11 16:13:06 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/08/12 03:35:19 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,10 @@ Intern::e_form_type	Intern::getFormType(std::string name)
 	throw Intern::InvalidForm();
 }
 
-std::string	Intern::getFormName(Intern::e_form_type type)
+std::string	Intern::getFormName(int type)
 {
-	if (type == MAX_FORM_TYPE)
-		throw Intern::InvalidForm();
+//	if (!(0 < type && type < MAX_FORM_TYPE))
+//		throw Intern::InvalidForm();
 	return Intern::_form_names[type];
 }
 

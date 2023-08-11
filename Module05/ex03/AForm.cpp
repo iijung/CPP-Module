@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 01:05:57 by minjungk          #+#    #+#             */
-/*   Updated: 2023/08/11 16:20:51 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/08/12 03:06:26 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,11 @@ const char*	AForm::GradeTooLowException::what() const throw()
 	return ("Grade too low exception");
 }
 
+const char*	AForm::NotSignedException::what() const throw()
+{
+	return ("Not signed");
+}
+
 const std::string	AForm::getName(void) const
 {
 	return (this->_name);
@@ -100,7 +105,7 @@ int	AForm::getExecuteGrade(void) const
 std::ostream&	operator<<(std::ostream& out, const AForm& obj)
 {
 	out << "║"
-		<< std::setw(3) << (obj.getSigned()? "✅" : "❌")
+		<< std::setw(4) << (obj.getSigned()? "✅" : "❌")
 		<< "│"
 		<< std::setw(7) << obj.getSignGrade()
 		<< "│"
@@ -109,7 +114,7 @@ std::ostream&	operator<<(std::ostream& out, const AForm& obj)
 		<< std::setw(30) << obj.getName()
 		<< "│"
 		<< std::setw(27) << obj.getTarget()
-		<< "║" << std::endl;
+		<< "║";
 	return (out);
 }
 

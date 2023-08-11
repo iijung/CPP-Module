@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 22:44:10 by minjungk          #+#    #+#             */
-/*   Updated: 2023/08/11 13:13:33 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/08/12 03:08:11 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,8 @@ void	Bureaucrat::executeForm(AForm const & form)
 {
 	try
 	{
+		if (form.getSigned() == false)
+			throw AForm::NotSignedException();
 		form.execute(*this);
 		std::cout << this->_name << " executed " << form.getName() << std::endl;
 	}
