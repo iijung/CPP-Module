@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 01:05:57 by minjungk          #+#    #+#             */
-/*   Updated: 2023/08/12 18:45:28 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/08/12 18:50:17 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,6 +164,8 @@ void	Interface::run(void)
 {
 	while (_end == false)
 	{
+		if (std::cin.eof())
+			break ;
 		_display();
 		_moveCursor(5 + _idx, 2);
 		switch (_getKey())
