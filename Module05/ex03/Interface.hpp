@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 19:48:12 by minjungk          #+#    #+#             */
-/*   Updated: 2023/08/12 02:45:16 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/08/12 18:18:07 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,13 @@
 # include <cstdio>
 # include <unistd.h>
 # include <termios.h>
+# include <limits>
 
-#define CLEAR_SCREEN "\x1b[2J\x1b[H"
-#define HIDE_CURSOR "\x1b[?25l"
-#define SHOW_CURSOR "\x1b[?25h"
-#define MOVE_CURSOR_UP "\x1b[A"
-#define MOVE_CURSOR_DOWN "\x1b[B"
+#define CLEAR_SCREEN	"\033[2J\033[H"
+#define CLEAR_LINE		"\033[K"
+#define CLEAR_LINE		"\033[K"
+#define MOVE_CURSOR_UP	"\033[A"
+#define MOVE_CURSOR_DOWN "\033[B"
 
 class Interface
 {
@@ -37,13 +38,14 @@ class Interface
 		size_t		_idx;
 
 		/* gui util*/
+		int		_getKey(void) const;
 		void	_moveCursor(int row, int col) const;
-
-		AForm*	_newForm(void);
-
 		void	_display(void) const;
-		void	_commandForm(void);
-		void	_command(void);
+		void	_displayOption(int selected) const;
+		void	_commandOption(void);
+
+		/* util*/
+		void	_newForm(void);
 	public:
 		Interface(void);
 		Interface(std::string bureaucrat);

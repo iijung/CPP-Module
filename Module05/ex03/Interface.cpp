@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 01:05:57 by minjungk          #+#    #+#             */
-/*   Updated: 2023/08/12 03:35:02 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/08/12 18:45:28 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,18 +56,33 @@ Interface& Interface::operator=(const Interface& obj)
 }
 
 /* ************************************************************************** */
-// gui
+// util
 /* ************************************************************************** */
 
-void	Interface::run(void)
+void	Interface::_moveCursor(int row, int col) const
 {
-	while (_end == false)
-	{
-		_display();
-		_moveCursor(5 + _idx, 2);
-		_command();
-	}
+	std::cout << "\x1b[" << row << ";" << col << "H";
 }
+
+int	Interface::_getKey(void) const
+{
+	int				key;
+	struct termios	old_term, new_term;
+
+	tcgetattr(STDIN_FILENO, &old_term);
+	{
+		new_term = old_term;
+		new_term.c_lflag &= ~(ICANON | ECHO);
+		tcsetattr(STDIN_FILENO, TCSANOW, &new_term);
+		key = getchar();
+	}
+	tcsetattr(STDIN_FILENO, TCSANOW, &old_term);
+	return (key);
+}
+
+/* ************************************************************************** */
+// display
+/* ************************************************************************** */
 
 void	Interface::_display(void) const
 {
@@ -100,203 +115,189 @@ void	Interface::_display(void) const
 	std::cout << "╚══════════════════════════════════════════════════════════════════════════════╝" << std::endl;
 }
 
-void	Interface::_moveCursor(int row, int col) const
+void	Interface::_displayOption(int selected) const
 {
-	std::cout << "\x1b[" << row << ";" << col << "H";
+	static const char *popup[5] = 
+	{
+		"┌───────────────────────────┐",
+		"│       Choose option       │",
+		"│                           │",
+		"│ [sign] [execute] [delete] │",
+		"└───────────────────────────┘"
+	};
+	for (int i = 0; i < 5; i++)
+	{
+		_moveCursor(8 + i, 20);
+		switch (i)
+		{
+			case 1:
+				std::cout << "\033[1m" << popup[i] << "\033[0m" << std::endl;
+				break ;
+			case 3:
+				switch (selected)
+				{
+					case 0:
+						std::cout << "│ \033[44m[sign]\033[0m [execute] [delete] │" << std::endl;
+						_moveCursor(8 + i, 20 + 2);
+						break ;
+					case 1:
+						std::cout << "│ [sign] \033[44m[execute]\033[0m [delete] │" << std::endl;
+						_moveCursor(8 + i, 20 + 11);
+						break ;
+					case 2:
+						std::cout << "│ [sign] [execute] \033[44m[delete]\033[0m │" << std::endl;
+						_moveCursor(8 + i, 20 + 21);
+						break ;
+				}
+				break ;
+			default:
+				std::cout << popup[i] << std::endl; 
+		}
+	}
 }
 
-void	Interface::_commandForm(void)
+/* ************************************************************************** */
+// gui
+/* ************************************************************************** */
+
+void	Interface::run(void)
+{
+	while (_end == false)
+	{
+		_display();
+		_moveCursor(5 + _idx, 2);
+		switch (_getKey())
+		{
+			case 'q':
+				_end = true;
+				_moveCursor(16, 0);
+				break ;
+			case '1':
+				_bureaucrat.decrement();
+				break ;
+			case '2':
+				_bureaucrat.increment();
+				break ;
+			case '\033':
+				_getKey();	// skip '['
+				switch (_getKey())
+				{
+					case 'A': // Arrow Up
+						_idx = (MAX_FORM + _idx - 1) % MAX_FORM;
+						break ;
+					case 'B': // Arrow Down
+						_idx = (_idx + 1) % MAX_FORM;
+						break ;
+				}
+				break ;
+			case '\n':
+				_commandOption();
+				break ;
+		}
+	}
+}
+
+void	Interface::_commandOption(void)
 {
 	if (_forms[_idx] == NULL)
 	{
 		_moveCursor(16, 0);
 		_newForm();
+		_getKey();	// press any key
 		return ;
 	}
 	int	selected = 0;
 	while (1)
 	{
-		static const char *popup[5] = 
-		{
-			"┌───────────────────────────┐",
-			"│       Choose option       │",
-			"│                           │",
-			"│ [sign] [execute] [delete] │",
-			"└───────────────────────────┘"
-		};
-		for (int i = 0; i < 5; i++)
-		{
-			_moveCursor(8 + i, 20);
-			switch (i)
-			{
-				case 1:
-					std::cout << "\033[1m" << popup[i] << "\033[0m" << std::endl;
-					break ;
-				case 3:
-				{
-					switch (selected)
-					{
-						case 0:
-							std::cout << "│ \033[44m[sign]\033[0m [execute] [delete] │" << std::endl;
-							_moveCursor(8 + i, 20 + 2);
-							break ;
-						case 1:
-							std::cout << "│ [sign] \033[44m[execute]\033[0m [delete] │",
-							_moveCursor(8 + i, 20 + 11);
-							break ;
-						case 2:
-							std::cout << "│ [sign] [execute] \033[44m[delete]\033[0m │",
-							_moveCursor(8 + i, 20 + 21);
-							break ;
-					}
-					break ;
-				}
-				default:
-					std::cout << popup[i] << std::endl; 
-			}
-		}
-		int	key = getchar();
-		
-		switch (key)
+		_displayOption(selected);
+		switch (_getKey())
 		{
 			case 'q':
 				return ;
-			case 's': selected = 0; break ;
-			case 'e': selected = 1; break ;
-			case 'd': selected = 2; break ;
+			case 's':
+				selected = 0;
+				break ;
+			case 'e':
+				selected = 1;
+				break ;
+			case 'd':
+				selected = 2;
+				break ;
 			case '\033':
-					getchar();
-					key = getchar();
-					switch (key)
-					{
-						case 'C': // Arrow Right
-							selected = (selected + 1) % 3;
-							break ;
-						case 'D': // Arrow Down
-							selected = (3 + selected - 1) % 3;
-							break ;
-					}
-					break ;
-				case '\n':
-					_display();
-					_moveCursor(16, 0);
-					switch (selected)
-					{
-						case 0:
-							_bureaucrat.signForm(*_forms[_idx]);
-							getchar();
-							break ;
-						case 1:
-							_bureaucrat.executeForm(*_forms[_idx]);
-							getchar();
-							break ;
-						case 2:
-							delete _forms[_idx];
-							_forms[_idx] = NULL;
-							break ;
-					}
-					return ;
-			}
-		}
-}
-
-void	Interface::_command(void)
-{
-	struct termios	old_term;
-
-	tcgetattr(STDIN_FILENO, &old_term);
-	{
-		struct termios	new_term = old_term;
-		new_term.c_lflag &= ~(ICANON | ECHO);
-		tcsetattr(STDIN_FILENO, TCSANOW, &new_term);
-		{
-			int	key = getchar();
-			
-			switch (key)
-			{
-				case 'q':
-					_end = true;
-					_moveCursor(16, 0);
-					break ;
-				case '1': _bureaucrat.decrement(); break ;
-				case '2': _bureaucrat.increment(); break ;
-				case '\033':
-					getchar();
-					key = getchar();
-					switch (key)
-					{
-						case 'A': // Arrow Up
-							_idx = (MAX_FORM + _idx - 1) % MAX_FORM;
-							break ;
-						case 'B': // Arrow Down
-							_idx = (_idx + 1) % MAX_FORM;
-							break ;
-					}
-					break ;
-				case '\n':
-					_commandForm();
-					break ;
-				default:
-					break ;
-			}
+				_getKey();
+				switch (_getKey())
+				{
+					case 'C': // Arrow Right
+						selected = (selected + 1) % 3;
+						break ;
+					case 'D': // Arrow Down
+						selected = (3 + selected - 1) % 3;
+						break ;
+				}
+				break ;
+			case '\n':
+				_display();
+				_moveCursor(16, 0);
+				switch (selected)
+				{
+					case 0:
+						_bureaucrat.signForm(*_forms[_idx]);
+						_getKey();	// press any key
+						break ;
+					case 1:
+						_bureaucrat.executeForm(*_forms[_idx]);
+						_getKey();	// press any key
+						break ;
+					case 2:
+						delete _forms[_idx];
+						_forms[_idx] = NULL;
+						break ;
+				}
+				return ;
 		}
 	}
-	tcsetattr(STDIN_FILENO, TCSANOW, &old_term);
 }
 
-/* ************************************************************************** */
-// backend
-/* ************************************************************************** */
-
-AForm*	Interface::_newForm(void)
+void	Interface::_newForm(void)
 {
 	std::string	name;
 	std::string	target;
-	AForm*		form;
-
 	try
 	{
 		Intern	intern;
 		{
 			for (int i = 0; i < Intern::MAX_FORM_TYPE; i++)
 				std::cout << i << ": " << intern.getFormName(i) << std::endl;
-			int	selected;
+			int	selected = 4;
 			while (1)
 			{
-				std::cout << "select name: ";
+				std::cout << "select name number: ";
 				std::cin >> selected;
-				if (std::cin.eof() || std::cin.fail())
-					std::cout << "\033[K";
-				else
+				if (0 <= selected && selected < Intern::MAX_FORM_TYPE)
 					break ;
+				if (std::cin.eof() || std::cin.fail())
+					throw std::invalid_argument("name error");
+				std::cout << MOVE_CURSOR_UP << CLEAR_LINE;
 			}
 			name = intern.getFormName(selected);
 		}
 		{
-			while (1)
-			{
-				std::cout << "input target: ";
-				std::cin >> target;
-				if (std::cin.eof() || std::cin.fail())
-					std::cout << "\033[K";
-				else
-					break ;
-			}
+			std::cout << "input target: ";
+			std::cin >> target;
+			if (std::cin.eof() || std::cin.fail())
+				throw std::invalid_argument("target error");
 		}
-		form = intern.makeForm(name, target);
+		this->_forms[_idx] = intern.makeForm(name, target);
+		_display();
+		_moveCursor(16, 0);
+		std::cout << "intern makes Form(\"" << name << "\", \"" << target << "\")" << std::endl;
 	}
 	catch (std::exception &e)
 	{
+		_display();
+		_moveCursor(16, 0);
 		std::cout << "failed to newForm: " << e.what() << std::endl;
-		return (NULL);
 	}
-	for (size_t i = 0; i < MAX_FORM; i++)
-	{
-		if (this->_forms[i] == NULL)
-		{
-			this->_forms[i] = form;
-			return (form);
-		}
-	}
-	return (form);
+	std::cin.clear();
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
