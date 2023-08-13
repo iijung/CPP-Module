@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 23:11:03 by minjungk          #+#    #+#             */
-/*   Updated: 2023/08/11 17:08:02 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/08/13 15:30:27 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,5 @@ int	main(int argc, char **argv)
 	Interface	interface(argv[1]);
 
 	interface.run();
-//	std::cout << std::setfill('=') << std::setw(80) << "=" << std::endl;
-//	std::cout << std::setfill(' ') << repository;
-//	std::cout << "q: Quit\t1:increment grade\t2:decrement grade" << std::endl;
-//	std::cout << std::setfill('=') << std::setw(80) << "." << std::endl;
-//	std::cout << std::setfill('=') << std::setw(80) << "." << std::endl;
 	return (0);
 }
