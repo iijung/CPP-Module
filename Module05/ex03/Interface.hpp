@@ -6,13 +6,13 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 19:48:12 by minjungk          #+#    #+#             */
-/*   Updated: 2023/08/12 18:18:07 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/08/13 16:21:13 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-#ifndef __A_FORM_REPOSITORY_H__
-# define __A_FORM_REPOSITORY_H__
+#ifndef __A_INTERFACE_H__
+# define __A_INTERFACE_H__
 # include "Intern.hpp"
 # include <cstdio>
 # include <unistd.h>
@@ -20,7 +20,6 @@
 # include <limits>
 
 #define CLEAR_SCREEN	"\033[2J\033[H"
-#define CLEAR_LINE		"\033[K"
 #define CLEAR_LINE		"\033[K"
 #define MOVE_CURSOR_UP	"\033[A"
 #define MOVE_CURSOR_DOWN "\033[B"
@@ -56,4 +55,4 @@ class Interface
 		void	run(void);
 };
 
-#endif /* __A_FORM_REPOSITORYH__ */
+#endif /* __A_INTERFACEH__ */

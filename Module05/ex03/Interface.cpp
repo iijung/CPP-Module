@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 01:05:57 by minjungk          #+#    #+#             */
-/*   Updated: 2023/08/13 15:55:38 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/08/13 16:21:27 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ Interface& Interface::operator=(const Interface& obj)
 {
 	if (this == &obj)
 		return (*this);
+	_bureaucrat = obj._bureaucrat;
+	_end = obj._end;
 	_idx = obj._idx;
 	for (size_t i = 0; i < MAX_FORM; i++)
 		_forms[i] = obj._forms[i]? obj._forms[i]->clone() : NULL;
@@ -61,7 +63,7 @@ Interface& Interface::operator=(const Interface& obj)
 
 void	Interface::_moveCursor(int row, int col) const
 {
-	std::cout << "\x1b[" << row << ";" << col << "H";
+	std::cout << "\033[" << row << ";" << col << "H";
 }
 
 int	Interface::_getKey(void) const
