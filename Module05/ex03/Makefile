@@ -6,7 +6,7 @@
 #    By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/05 18:06:36 by minjungk          #+#    #+#              #
-#    Updated: 2023/08/11 17:05:19 by minjungk         ###   ########.fr        #
+#    Updated: 2023/08/13 15:34:06 by minjungk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,6 @@ SRCS	+= \
 	PresidentialPardonForm.cpp \
 	Intern.cpp \
 	$(NAME).cpp
-
 OBJS = $(SRCS:.cpp=.o)
 DEPS = $(SRCS:.cpp=.d)
 -include $(DEPS)

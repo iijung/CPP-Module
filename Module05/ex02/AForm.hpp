@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 19:48:12 by minjungk          #+#    #+#             */
-/*   Updated: 2023/08/09 19:02:56 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/08/13 15:32:44 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,16 @@ class AForm
 				virtual const char* what() const throw();
 		};
 		class GradeTooLowException: public std::exception
+		{
+			public:
+				virtual const char* what() const throw();
+		};
+		class AlreadySignedException: public std::exception
+		{
+			public:
+				virtual const char* what() const throw();
+		};
+		class NotSignedException: public std::exception
 		{
 			public:
 				virtual const char* what() const throw();

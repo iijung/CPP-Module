@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 01:05:57 by minjungk          #+#    #+#             */
-/*   Updated: 2023/08/08 04:56:25 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/08/13 15:43:13 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 
 Form::~Form(void)
 {
-	std::cout << "Form " << _name << " destructor called" << std::endl;
 }
 
 Form::Form(void)
@@ -26,18 +25,19 @@ Form::Form(void)
 	_sign_grade(150),
 	_execute_grade(150)
 {
-	std::cout << "Form default constructor called" << std::endl;
 	this->_signed = false;
 }
 
-
-Form::Form(std::string name, int sign_grade, int execute_grade):
-	_name(name),
+Form::Form(std::string name, int sign_grade, int execute_grade)
+	:_name(name),
 	_sign_grade(sign_grade),
 	_execute_grade(execute_grade)
 {
-	std::cout << "Form " << _name << " constructor called" << std::endl;
 	this->_signed = false;
+	if (this->_sign_grade < 1 || this->_execute_grade < 1)
+		throw Bureaucrat::GradeTooHighException();
+	if (this->_sign_grade > 150 || this->_sign_grade > 150)
+		throw Bureaucrat::GradeTooLowException();
 }
 
 
@@ -46,16 +46,14 @@ Form::Form(const Form& obj):
 	_sign_grade(obj.getSignGrade()),
 	_execute_grade(obj.getExecuteGrade())
 {
-	std::cout << "Form " << _name << "copy constructor called" << std::endl;
 	*this = obj;
 }
 
 Form& Form::operator=(const Form& obj)
 {
-	std::cout << "Form " << _name << " = " << obj.getName() << "copy assignment operator called" << std::endl;
 	if (this == &obj)
 		return (*this);
-	this->_signed = obj.getSigned();
+	this->_signed = obj._signed;
 	return (*this);
 }
 
@@ -71,6 +69,11 @@ const char*	Form::GradeTooHighException::what() const throw()
 const char*	Form::GradeTooLowException::what() const throw()
 {
 	return ("Grade too low exception");
+}
+
+const char*	Form::AlreadySignedException::what() const throw()
+{
+	return ("Already signed");
 }
 
 const std::string	Form::getName(void) const
@@ -104,6 +107,8 @@ std::ostream&	operator<<(std::ostream& out, const Form& obj)
 
 void	Form::beSigned(const Bureaucrat& bureaucrat)
 {
+	if (this->_signed)
+		throw Form::AlreadySignedException();
 	if (this->getSignGrade() < bureaucrat.getGrade())
 		throw Form::GradeTooLowException();
 	this->_signed = true;

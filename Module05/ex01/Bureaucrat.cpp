@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 22:44:10 by minjungk          #+#    #+#             */
-/*   Updated: 2023/08/07 17:10:51 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/08/13 15:38:20 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,16 @@
 
 Bureaucrat::~Bureaucrat(void)
 {
-	std::cout << "Bureaucrat " << _name << " destructor called" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(void)
 	: _name("default"), _grade(150)
 {
-	std::cout << "Bureaucrat default constructor called" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const std::string &name, int grade)
 	: _name(name), _grade(grade)
 {
-	std::cout << "Bureaucrat " << _name << " constructor called" << std::endl;
 	if (this->_grade < 1)
 		throw Bureaucrat::GradeTooHighException();
 	if (this->_grade > 150)
@@ -38,18 +35,15 @@ Bureaucrat::Bureaucrat(const std::string &name, int grade)
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &obj)
-	: _name(obj.getName())
+	: _name(obj.getName()), _grade(obj.getGrade())
 {
-	std::cout << "Bureaucrat " << _name << " copy constructor called" << std::endl;
-	*this = obj;
 }
 
 Bureaucrat&	Bureaucrat::operator=(const Bureaucrat& obj)
 {
-	std::cout << "Bureaucrat " << _name << " = " << obj.getName() << " copy assignment operator called" << std::endl;
 	if (this == &obj)
 		return (*this);
-	this->_grade = obj.getGrade();
+	new (this) Bureaucrat(obj);
 	return (*this);
 }
 
