@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 03:03:19 by minjungk          #+#    #+#             */
-/*   Updated: 2023/08/11 15:49:02 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/08/13 15:29:05 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ PresidentialPardonForm&	PresidentialPardonForm::operator=(const PresidentialPard
 
 int	PresidentialPardonForm::execute(Bureaucrat const & executor) const
 {
+	if (this->getSigned() == false)
+		throw AForm::NotSignedException();
 	if (this->getExecuteGrade() < executor.getGrade())
 		throw AForm::GradeTooLowException();
 	std::cout << this->getTarget() << " has been pardoned by [1;36m Zaphod Beeblebrox.[0m" << std::endl;

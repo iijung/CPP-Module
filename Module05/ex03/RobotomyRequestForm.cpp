@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 03:03:12 by minjungk          #+#    #+#             */
-/*   Updated: 2023/08/11 15:48:17 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/08/13 15:29:05 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ RobotomyRequestForm&	RobotomyRequestForm::operator=(const RobotomyRequestForm &o
 
 int	RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
+	if (this->getSigned() == false)
+		throw AForm::NotSignedException();
 	if (this->getExecuteGrade() < executor.getGrade())
 		throw AForm::GradeTooLowException();
 	std::srand(std::time(NULL));

@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 03:03:05 by minjungk          #+#    #+#             */
-/*   Updated: 2023/08/11 15:48:51 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/08/13 15:29:06 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ ShrubberyCreationForm&	ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 int	ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
+	if (this->getSigned() == false)
+		throw AForm::NotSignedException();
 	if (this->getExecuteGrade() < executor.getGrade())
 		throw AForm::GradeTooLowException();
 	std::string		name = this->getTarget() + "_shrubbery";
