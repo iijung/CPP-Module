@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 01:05:57 by minjungk          #+#    #+#             */
-/*   Updated: 2023/08/12 18:50:17 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/08/13 15:55:38 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -289,10 +289,9 @@ void	Interface::_newForm(void)
 			if (std::cin.eof() || std::cin.fail())
 				throw std::invalid_argument("target error");
 		}
-		this->_forms[_idx] = intern.makeForm(name, target);
 		_display();
 		_moveCursor(16, 0);
-		std::cout << "intern makes Form(\"" << name << "\", \"" << target << "\")" << std::endl;
+		this->_forms[_idx] = intern.makeForm(name, target);
 	}
 	catch (std::exception &e)
 	{

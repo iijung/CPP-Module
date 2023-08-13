@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 17:20:14 by minjungk          #+#    #+#             */
-/*   Updated: 2023/08/12 16:58:18 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/08/13 15:58:05 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,18 +76,32 @@ const char*	Intern::InvalidForm::what() const throw()
 
 AForm*	Intern::makeForm(std::string name, std::string target)
 {
+	AForm				*form;
 	const e_form_type	type = this->getFormType(name);
 
-	switch(type)
+	try
 	{
-		case SHRUBBERY_CREATION:
-			return (new ShrubberyCreationForm(target));
-		case ROBOTOMY_REQUEST:
-			return (new RobotomyRequestForm(target));
-		case PRESIDENTIAL_PARDON:
-			return (new PresidentialPardonForm(target));
-		default:
-			break ;
+		switch(type)
+		{
+			case SHRUBBERY_CREATION:
+				form = new ShrubberyCreationForm(target);
+				break ;
+			case ROBOTOMY_REQUEST:
+				form = new RobotomyRequestForm(target);
+				break ;
+			case PRESIDENTIAL_PARDON:
+				form = new PresidentialPardonForm(target);
+				break ;
+			default:
+				throw Intern::InvalidForm();
+				break ;
+		}
+		std::cout << "Intern creates " << name << std::endl;
+		return (form);
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << "Intern don't creates " << name << " because " << e.what() << std::endl;
 	}
 	return (NULL);
 }
