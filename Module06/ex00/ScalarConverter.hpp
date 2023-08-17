@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 16:16:27 by minjungk          #+#    #+#             */
-/*   Updated: 2023/08/15 00:11:19 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/08/15 01:51:11 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,6 @@
 class ScalarConverter
 {
 	private:
-		static char		_char;
-		static int		_int;
-		static float	_float;
-		static double	_double;
-
 		ScalarConverter(void);
 		ScalarConverter(const ScalarConverter &obj);
 		ScalarConverter& operator=(const ScalarConverter &obj);
