@@ -24,7 +24,7 @@ template <typename T>
 Array<T>::Array(void)
 	: _size(0)
 {
-	_arr = new T();
+	_arr = new T[_size];
 }
 
 template <typename T>
