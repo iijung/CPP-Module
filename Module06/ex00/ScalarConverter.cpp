@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 16:16:41 by minjungk          #+#    #+#             */
-/*   Updated: 2023/08/15 01:28:28 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/08/21 16:55:34 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,8 +117,11 @@ static void	print_double(const double value)
 
 void	ScalarConverter::convert(const std::string &literal)
 {
-	const double	value = std::strtod(literal.c_str(), NULL);
+	char	*endptr = NULL;
+	double	value = std::strtod(literal.c_str(), &endptr);
 
+	if (endptr && *endptr != '\0' && literal.length() == 1)
+		value = static_cast<double>(literal.at(0));
 	std::cout << std::fixed << std::setprecision(1);
 	print_char(value);
 	print_int(value);
