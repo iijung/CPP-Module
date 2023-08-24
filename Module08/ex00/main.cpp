@@ -6,14 +6,14 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 21:55:15 by minjungk          #+#    #+#             */
-/*   Updated: 2023/08/21 01:23:31 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/08/23 18:10:13 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "easyfind.hpp"
 #include <vector>
+#include <deque>
 #include <list>
-#include <map>
 #include <iostream>
 
 void	print(const int & n)
@@ -30,11 +30,13 @@ int	main(int argc, char **argv)
 	}
 	int							value = std::atoi(argv[1]);
 	std::vector<int>			v;
+	std::deque<int>				d;
 	std::list<int>				l;
 
 	for (int i = 0; i < 5; i++)
 	{
 		v.push_back(i);
+		d.push_back(i);
 		l.push_back(i);
 	}
 
@@ -46,6 +48,15 @@ int	main(int argc, char **argv)
 	catch (std::exception &e)
 	{
 		std::cerr << "vector: " << e.what() << std::endl;
+	}
+	try
+	{
+		std::deque<int>::iterator				it = easyfind(d, value);
+		std::cout << "deque: " << *it << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << "deque: " << e.what() << std::endl;
 	}
 	try
 	{
