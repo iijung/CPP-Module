@@ -27,7 +27,7 @@ MutantStack<T, Container>::MutantStack(void)
 
 template <typename T, typename Container>
 MutantStack<T, Container>::MutantStack(const MutantStack &obj)
-	: std::stack<T, Container>()
+	: std::stack<T, Container>(obj.c)
 {
 }
 

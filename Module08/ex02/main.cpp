@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 22:22:46 by minjungk          #+#    #+#             */
-/*   Updated: 2023/08/26 17:21:01 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/08/26 23:22:16 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,21 @@ void	test_deque(void)
 	}
 	std::stack<int> s(mstack);
 	// more test
+	MutantStack<int> copy(mstack);
+	std::cout << "# origin" << std::endl;
+	mstack.show(); mstack.rshow();
+	std::cout << "# fill acsending" << std::endl;
+	mstack.fill();
+	mstack.show(); mstack.rshow();
+	std::cout << "# fill desending" << std::endl;
+	mstack.rfill();
+	mstack.show(); mstack.rshow();
+	std::cout << "# copy show" << std::endl;
+	copy.show(); copy.rshow();
 	std::cout << "stack pop: ";
 	for (; s.empty() == false; s.pop())
 		std::cout << s.top() << " ";
 	std::cout << std::endl;
-	mstack.show(); mstack.rshow();
-	mstack.fill();
-	mstack.show(); mstack.rshow();
-	mstack.rfill();
-	mstack.show(); mstack.rshow();
 }
 
 void	test_list(void)
@@ -88,15 +94,21 @@ void	test_list(void)
 	}
 	std::stack<int, std::list<int> > s(mstack);
 	// more test
+	MutantStack<int, std::list<int> > copy(mstack);
+	std::cout << "# origin" << std::endl;
+	mstack.show(); mstack.rshow();
+	std::cout << "# fill acsending" << std::endl;
+	mstack.fill();
+	mstack.show(); mstack.rshow();
+	std::cout << "# fill desending" << std::endl;
+	mstack.rfill();
+	mstack.show(); mstack.rshow();
+	std::cout << "# copy show" << std::endl;
+	copy.show(); copy.rshow();
 	std::cout << "stack pop: ";
 	for (; s.empty() == false; s.pop())
 		std::cout << s.top() << " ";
 	std::cout << std::endl;
-	mstack.show(); mstack.rshow();
-	mstack.fill();
-	mstack.show(); mstack.rshow();
-	mstack.rfill();
-	mstack.show(); mstack.rshow();
 }
 
 int main()
