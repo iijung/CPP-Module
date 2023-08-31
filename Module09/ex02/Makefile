@@ -6,7 +6,7 @@
 #    By: minjungk <minjungk@student.42seoul.>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/27 00:14:59 by minjungk          #+#    #+#              #
-#    Updated: 2023/08/27 02:39:15 by minjungk         ###   ########.fr        #
+#    Updated: 2023/08/29 01:57:58 by minjungk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ CPPFLAGS	= -I.
 NAME	= PmergeMe
 
 SRCS = \
-	$(NAME).cpp
+	PmergeMe.cpp \
+	main.cpp
 OBJS = $(SRCS:.cpp=.o)
 DEPS = $(SRCS:.cpp=.d)
 -include $(DEPS)
