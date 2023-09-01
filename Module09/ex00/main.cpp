@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 00:46:57 by minjungk          #+#    #+#             */
-/*   Updated: 2023/09/01 16:48:42 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/09/01 17:15:04 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,7 @@
 
 int	main(int argc, char **argv)
 {
-	if (argc != 2)
-	{
-		std::cout << "Usage: " << argv[0] << " <file>" << std::endl;
-		return (EXIT_FAILURE);
-	}
+	(void)argc;
 	try
 	{
 		BitcoinExchange	btc("data.csv");

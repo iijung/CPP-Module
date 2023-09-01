@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 00:47:11 by minjungk          #+#    #+#             */
-/*   Updated: 2023/09/01 17:08:32 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/09/01 17:14:21 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	BitcoinExchange::_init(const char *file)
 	// 1. open file
 	std::ifstream	in(file, std::ios_base::in);
 	if (in.is_open() == false)
-		throw std::ios_base::failure("colud not open database file.");
+		throw std::runtime_error("colud not open database file.");
 
 	// 2. read file header
 	std::string	line;
@@ -107,7 +107,7 @@ void	BitcoinExchange::_init(const char *file)
 		if (!(row >> std::get_time(&date, "%Y-%m-%d"))
 			|| !(row >> delimeter && delimeter == ',')
 			|| !(row >> exchange_rate))
-			throw std::ios_base::failure("");
+			throw std::runtime_error("invalid file.");
 
 		// 5. insert
 		_db.insert(std::make_pair(std::mktime(&date), exchange_rate));
@@ -119,7 +119,7 @@ void	BitcoinExchange::run(const char *file)
 	// 1. open file
 	std::ifstream	in(file, std::ios_base::in);
 	if (in.is_open() == false)
-		throw std::ios_base::failure("colud not open file.");
+		throw std::runtime_error("colud not open file.");
 
 	// 2. read file header
 	std::string	line;
