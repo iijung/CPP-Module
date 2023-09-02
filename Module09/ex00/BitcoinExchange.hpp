@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 00:47:06 by minjungk          #+#    #+#             */
-/*   Updated: 2023/09/01 16:55:56 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/09/03 03:09:55 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 # define __BITCOIN_EXCHANGE_H__
 # include <stdexcept>
 # include <string>		// getline
-# include <ctime>		// tm, time_t, get_time
-# include <map>			// multimap
+# include <ctime>		// tm, time_t, strftime, strptime
+# include <map>			// map
 # include <fstream>		// ifstream
-# include <sstream>		// istringstream, ostringstream
+# include <sstream>		// istringstream
 # include <iostream>	// cout
 
 class BitcoinExchange
 {
 	private:
-		typedef std::multimap<std::time_t, double>	multimap;
-		multimap									_db;
+		typedef std::map<std::time_t, double>	map;
+		map										_db;
 
 		void	_init(const char *file);
 	public:

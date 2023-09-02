@@ -6,7 +6,7 @@
 /*   By: minjungk <minjungk@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 00:46:57 by minjungk          #+#    #+#             */
-/*   Updated: 2023/09/01 17:15:04 by minjungk         ###   ########.fr       */
+/*   Updated: 2023/09/03 02:45:06 by minjungk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 
 int	main(int argc, char **argv)
 {
-	(void)argc;
 	try
 	{
-		BitcoinExchange	btc("data.csv");
-
-		btc.run(argv[1]);
+		if (argc == 3)
+			BitcoinExchange(argv[2]).run(argv[1]);
+		else
+			BitcoinExchange().run(argv[1]);
 	}
 	catch (std::exception &e)
 	{
